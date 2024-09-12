@@ -1,0 +1,402 @@
+[
+    {
+        "name": "A.Cha.Bi.",
+        "coordinates": [
+            -27.45269,
+            -58.986382
+        ],
+        "category": "2"
+    },
+    {
+        "name": "ABC - Asociación De Bibliotecarios De Córdoba",
+        "coordinates": [
+            -31.414042,
+            -64.212627
+        ],
+        "category": "2"
+    },
+    {
+        "name": "ABIM",
+        "coordinates": [
+            -27.363675,
+            -55.889087
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Abisfe",
+        "coordinates": [
+            -31.642938,
+            -60.705527
+        ],
+        "category": "2"
+    },
+    {
+        "name": "ABJ - Asociación De Bibliotecarios De Jujuy",
+        "coordinates": [
+            -24.185609,
+            -65.300144
+        ],
+        "category": "2"
+    },
+    {
+        "name": "ABPR",
+        "coordinates": [
+            -32.943869,
+            -60.641826
+        ],
+        "category": "2"
+    },
+    {
+        "name": "ABYDOME",
+        "coordinates": [
+            -32.950583,
+            -68.824519
+        ],
+        "category": "2"
+    },
+    {
+        "name": "ACBJ",
+        "coordinates": [
+            -34.638341,
+            -58.363874
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Alfonsina Storni",
+        "coordinates": [
+            -34.614755,
+            -58.38809
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Álvaro Yunque",
+        "coordinates": [
+            -34.685872,
+            -58.462763
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Antonio Devoto",
+        "coordinates": [
+            -34.599202,
+            -58.510793
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Archivo",
+        "coordinates": [
+            -34.604377,
+            -58.371811
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Archivo y Biblioteca. Procuración General de la Nación. Fiscala Nacional de Investigaciones Administrativas",
+        "coordinates": [
+            -34.607351,
+            -58.401235
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Archivos Argentinos De Dermatología",
+        "coordinates": [
+            -34.6092,
+            -58.383012
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Área Bibliotecas Técnicas-Cdi",
+        "coordinates": [
+            -34.6093445,
+            -58.3695243
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Área De Capacitación",
+        "coordinates": [
+            -31.727919,
+            -60.526448
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Área De Documentación Y Archivos",
+        "coordinates": [
+            -34.614499,
+            -58.377642
+        ],
+        "category": "1"
+    },
+    {
+        "name": "Área Gestión Documental Y Biblioteca - Centro Nacional De Información Sobre Seguridad Y Salud En El Trabajo De Argentina",
+        "coordinates": [
+            -34.606896,
+            -58.377185
+        ],
+        "category": "1"
+    },
+    {
+        "name": "Armando Ottalagano",
+        "coordinates": [
+            -31.750248,
+            -60.504074
+        ],
+        "category": "1"
+    },
+    {
+        "name": "Asobichu - Asociación De Bibliotecarios Del Chubut",
+        "coordinates": [
+            -43.249302,
+            -65.307635
+        ],
+        "category": "1"
+    },
+    {
+        "name": "Asociación Bernardino Rivadavia Biblioteca Popular",
+        "coordinates": [
+            -38.718843,
+            -62.267175
+        ],
+        "category": "1"
+    },
+    {
+        "name": "Asociación Biblioteca Popular \"Sarmiento\"",
+        "coordinates": [
+            -41.133442,
+            -71.310193
+        ],
+        "category": "1"
+    },
+    {
+        "name": "Asociación Cultural Biblioteca Popular Pública Mariano Moreno",
+        "coordinates": [
+            -34.711039,
+            -58.283396
+        ],
+        "category": "1"
+    },
+    {
+        "name": "Aula Biblioteca Dres. Salk Y Sabin",
+        "coordinates": [
+            -32.965402,
+            -60.648544
+        ],
+        "category": "1"
+    },
+    {
+        "name": "Baldomero F. Moreno",
+        "coordinates": [
+            -34.591402,
+            -58.450367
+        ],
+        "category": "1"
+    },
+    {
+        "name": "Base De Datos Unificada (Bdu)",
+        "coordinates": [
+            -34.59585,
+            -58.389153
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Benito Lynch",
+        "coordinates": [
+            -34.667846,
+            -58.496503
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Bibgra",
+        "coordinates": [
+            -34.710252,
+            -58.394139
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -34.547808,
+            -58.469003
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -46.44594923,
+            -67.5251565
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -34.7352965,
+            -58.3902374
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -34.605128,
+            -58.370983
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -32.8550111,
+            -60.705323
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -38.9401499,
+            -68.0573579
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -33.677323,
+            -65.4626627
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -33.2791325,
+            -66.3249152
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -24.8108193,
+            -65.4125651
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -29.143792,
+            -59.655991
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -33.6673559,
+            -65.4688821
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -34.5740401,
+            -60.9527631
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -34.5984423,
+            -58.5263455
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -28.4550222,
+            -65.7830471
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -34.6196464,
+            -58.5278245
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -27.4639891,
+            -58.8393693
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -34.5745977,
+            -58.4359841
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -34.8899,
+            -57.954674
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -32.9531697,
+            -60.6635805
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -24.1790158,
+            -65.3286898
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -33.67386364,
+            -65.46247653
+        ],
+        "category": "2"
+    },
+    {
+        "name": "Biblioteca",
+        "coordinates": [
+            -31.43736,
+            -64.19222
+        ],
+        "category": "2"
+    }
+]

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Map with Radius Sliders and Layer Toggle</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+        .slider-box {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 300px; /* Increased the width */
+            background-color: #f9f9f9;
+            padding: 10px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            z-index: 1000;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .slider-container {
+            margin-bottom: 15px;
+        }
+        #reset-button, #zero-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #reset-button:hover, #zero-button:hover {
+            background-color: #0056b3;
+        }
+        #zero-button {
+            background-color: #ff4d4d;
+        }
+        #zero-button:hover {
+            background-color: #cc0000;
+        
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div class="slider-box">
+        <div class="slider-container">
+            <label for="slider-40">Radio 40km:</label>
+            <input type="range" id="slider-40" min="0" max="60" value="40" step="1">
+            <span id="value-40">40</span>
+        </div>
+        <div class="slider-container">
+            <label for="slider-60">Radio 60km:</label>
+            <input type="range" id="slider-60" min="0" max="80" value="60" step="1">
+            <span id="value-60">60</span>
+        </div>
+        <div class="slider-container">
+            <label for="slider-80">Radio 80km:</label>
+            <input type="range" id="slider-80" min="0" max="120" value="80" step="1">
+            <span id="value-80">80</span>
+        </div>
+        <div class="slider-container">
+            <label for="slider-nuevo">Radio Nuevo:</label>
+            <input type="range" id="slider-nuevo" min="0" max="150" value="100" step="1">
+            <span id="value-nuevo">100</span>
+        </div>
+    <button id="reset-button">Reset</button>
+    <button id="zero-button">Zero</button>
+    </div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+        const map = L.map('map', {
+            center: [-34.515930, -58.519660],
+            zoom: 7.5
+        });
+
+        const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        // Create layer groups for each location
+        const circleLayerGroups = {};
+        const markerLayerGroups = {};
+        const greenIcon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+            });
+        const yellowIcon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+            });
+        const redIcon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+            });
+        
+
+
+        function createCircles(location) {
+            const layerGroup = L.layerGroup();
+            circleLayerGroups[location.name] = layerGroup;
+
+            const [lat, lng] = location.coordinates; // Ensure correct access to latitude and longitude
+
+            const marker = L.marker([lat, lng]).bindPopup(location.name);
+
+            // Create circles of different sizes
+            const circle40 = L.circle([lat, lng], {radius: 40000, color: 'green', weight: 2, fill: true, fillColor: 'green', fillOpacity: 0.2});
+            const circle60 = L.circle([lat, lng], {radius: 60000, color: 'yellow', weight: 2, fill: true, fillColor: 'yellow', fillOpacity: 0.2});
+            const circle80 = L.circle([lat, lng], {radius: 80000, color: 'red', weight: 2, fill: true, fillColor: 'red', fillOpacity: 0.2});
+            const circleNuevo = L.circle([lat, lng], {radius: 100000, color: 'white', weight: 2, fill: true, fillColor: 'white', fillOpacity: 0.2});
+
+            // Add marker and circles to the layer group
+            marker.addTo(layerGroup);
+            circle40.addTo(layerGroup);
+            circle60.addTo(layerGroup);
+            circle80.addTo(layerGroup);
+            circleNuevo.addTo(layerGroup);
+
+            // Add the layer group to the map so it's visible by default
+            layerGroup.addTo(map);
+        }
+
+        function createMarkers(location) {
+            const category = location.category;
+            let icon_color;
+
+            if (category === "1") {
+                icon_color = redIcon;
+            } else if (category === "2") {
+                icon_color = greenIcon;
+            }
+            
+            if (!markerLayerGroups[category]) {
+                markerLayerGroups[category] = L.layerGroup();
+            }
+
+            const layerGroup = markerLayerGroups[category];
+            const [lat, lng] = location.coordinates;
+
+            const marker = L.marker([lat, lng], {icon: icon_color}).bindPopup(location.name);
+
+            // Add marker to the layer group
+            marker.addTo(layerGroup);
+
+            // Add the layer group to the map so it's visible by default
+            layerGroup.addTo(map);
+        }
+
+        // Fetch locations from JSON file and create markers and circles
+        fetch('data/locations.json')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(createCircles);
+
+                // Add the layers control to the map
+                L.control.layers(null, circleLayerGroups).addTo(map);
+            })
+            .catch(error => console.error('Error loading locations.json:', error));
+
+        // Fetch places from JSON file and create markers only
+        fetch('data/places.json')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(createMarkers);
+                
+                // Add the layers control to the map
+                const categories = Array.from(new Set(data.map(p => p.category))); // Extract unique categories
+                const categoryLayers = {};
+                categories.forEach(category => {
+                    categoryLayers[category] = markerLayerGroups[category];
+                });
+                L.control.layers(null, categoryLayers).addTo(map);
+            })
+            .catch(error => console.error('Error loading places.json:', error));
+
+        // Update the circle radius when slider is moved
+        function updateCircles(radiusSize) {
+            const value = parseInt(document.getElementById(`slider-${radiusSize}`).value);
+            Object.values(circleLayerGroups).forEach(layerGroup => {
+                layerGroup.eachLayer(layer => {
+                    if (layer instanceof L.Circle) {
+                        const radius = layer.options.radius;
+                        if (radiusSize === '40' && radius === 40000) {
+                            layer.setRadius(value * 1000);
+                        } else if (radiusSize === '60' && radius === 60000) {
+                            layer.setRadius(value * 1000);
+                        } else if (radiusSize === '80' && radius === 80000) {
+                            layer.setRadius(value * 1000);
+                        } else if (radiusSize === 'nuevo' && radius === 100000) {
+                            layer.setRadius(value * 1000);
+                        }
+                    }
+                });
+            });
+            document.getElementById(`value-${radiusSize}`).textContent = value;
+        }
+
+        document.getElementById('slider-40').addEventListener('input', () => updateCircles('40'));
+        document.getElementById('slider-60').addEventListener('input', () => updateCircles('60'));
+        document.getElementById('slider-80').addEventListener('input', () => updateCircles('80'));
+        document.getElementById('slider-nuevo').addEventListener('input', () => updateCircles('nuevo'));
+
+    function resetSliders() {
+    // Reset the slider values
+    document.getElementById('slider-40').value = 40;
+    document.getElementById('slider-60').value = 60;
+    document.getElementById('slider-80').value = 80;
+    document.getElementById('slider-nuevo').value = 100;
+
+    // Update the displayed values next to the sliders
+    document.getElementById('value-40').textContent = 40;
+    document.getElementById('value-60').textContent = 60;
+    document.getElementById('value-80').textContent = 80;
+    document.getElementById('value-nuevo').textContent = 100;
+
+    // Update the circles' radii
+    updateCircles('40');
+    updateCircles('60');
+    updateCircles('80');
+    updateCircles('nuevo');
+}
+    function zeroSliders() {
+    // Reset the slider values
+    document.getElementById('slider-40').value = 0;
+    document.getElementById('slider-60').value = 0;
+    document.getElementById('slider-80').value = 0;
+    document.getElementById('slider-nuevo').value = 0;
+
+    // Update the displayed values next to the sliders
+    document.getElementById('value-40').textContent = 0;
+    document.getElementById('value-60').textContent = 0;
+    document.getElementById('value-80').textContent = 0;
+    document.getElementById('value-nuevo').textContent = 0;
+
+    // Update the circles' radii
+    updateCircles('40');
+    updateCircles('60');
+    updateCircles('80');
+    updateCircles('nuevo');
+}
+
+        // Add event listener to reset button
+        document.getElementById('reset-button').addEventListener('click', resetSliders);
+        document.getElementById('zero-button').addEventListener('click', zeroSliders);
+    </script>
+</body>
+</html>
