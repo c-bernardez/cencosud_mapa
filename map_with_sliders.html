@@ -171,7 +171,7 @@
         }
 
         // Fetch locations from JSON file and create markers and circles
-        fetch('data/locations.json')
+        fetch('https://c-bernardez.github.io/cencosud_mapa/data/locations.json')
             .then(response => response.json())
             .then(data => {
                 data.forEach(createCircles);
@@ -182,7 +182,7 @@
             .catch(error => console.error('Error loading locations.json:', error));
 
         // Fetch places from JSON file and create markers only
-        fetch('data/places.json')
+        fetch('https://c-bernardez.github.io/cencosud_mapa/data/places.json')
             .then(response => response.json())
             .then(data => {
                 data.forEach(createMarkers);
